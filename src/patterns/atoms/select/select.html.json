@@ -1,0 +1,3 @@
+{
+  "children": "<select class=\"selectpicker\">\n  <optgroup label=\"Picnic\">\n    <option>Mustard</option>\n    <option>Ketchup</option>\n    <option>Relish</option>\n    <option>Onions</option>\n    <option>Mushrooms</option>\n    <option>Pickles</option>\n    <option>Mayonnaise</option>\n    <option data-subtext=\"Hot\">Tabasco</option>\n    <option data-subtext=\"Hotter\" disabled=\"\">Sriracha</option>\n    <option data-subtext=\"Hottest\">Wasabi</option>\n  </optgroup>\n  <optgroup label=\"Camping\">\n    <option>Tent</option>\n    <option>Flashlight</option>\n    <option>Toilet Paper</option>\n    <option>Sleeping Bag</option>\n  </optgroup>\n</select>"
+}

@@ -1,0 +1,23 @@
+{
+  "health": [
+    {
+      "text": "A",
+      "current": "true"
+    },
+    {
+      "text": "B"
+    },
+    {
+      "text": "C"
+    },
+    {
+      "text": "D"
+    },
+    {
+      "text": "E"
+    },
+    {
+      "text": "F"
+    }
+  ]
+}

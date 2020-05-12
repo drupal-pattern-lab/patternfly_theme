@@ -1,0 +1,124 @@
+////
+/// @name RHC Ops UI Colors
+///
+/// To change the theme at the SCSS level, edit `_theme.scss` instead.
+/// Named by `http://chir.ag/projects/name-that-color/`.
+///
+/// @example
+/// Using a specific color:
+/// .text { color: $color-blues-lochmara }
+///
+/// Using a generic global color, non-specific (not recommended):
+/// .text { color: $color-blue }
+///
+/// Using a themeable color (see _theme.scss):
+/// .text { color: $palette-primary }
+///
+/// Using a shade:
+/// .text { color: color-level($palette-primary, -2) }
+////
+$color-interval: 10% !global;
+
+////
+/// These variables exist because there are very few IDE's that can parse SCSS
+/// maps for auto-complete or color display at this time.
+/// Named by `http://chir.ag/projects/name-that-color/`.
+//// @todo Revisit in 2018.
+// sass-lint:disable no-color-hex
+$color-black: #030303;
+$color-white: #fff;
+$color-whites-pearl-lusta: #fcf8e2;
+$color-blues-cerulean: #00b9e4;
+$color-blues-lagoon: #007a87;
+$color-blues-lochmara: #0088ce;
+$color-blue: $color-blues-lochmara;
+$color-grays-oslo-gray: #8b8d8f;
+$color-gray: $color-grays-oslo-gray;
+$color-greens-apple: #3f9c35;
+$color-greens-pistachio: #92d400;
+$color-green: $color-greens-apple;
+$color-oranges-tahiti-gold: #ec7a08;
+$color-oranges-web-orange: #f0ab00;
+$color-orange: $color-oranges-tahiti-gold;
+$color-gold: $color-oranges-web-orange;
+$color-purples-electric-violet: #703fec;
+$color-purple: $color-purples-electric-violet;
+$color-reds-bright-red: #a30000;
+$color-red: $color-reds-bright-red;
+$color-red-required: #cc0;
+
+// sass-lint:enable no-color-hex
+$color: (
+  'black': $color-black,
+  'white': $color-white,
+  'whites': (
+    'pearl-lusta': $color-whites-pearl-lusta
+  ),
+  'blue': $color-blue,
+  'blues': (
+    'cerulean': $color-blues-cerulean,
+    'lagoon': $color-blues-lagoon,
+    'lochmara': $color-blues-lochmara
+  ),
+  'gray': $color-gray,
+  'grays': (
+    'oslo-gray': $color-grays-oslo-gray,
+  ),
+  'green': $color-green,
+  'greens': (
+    'apple': $color-greens-apple,
+    'pistachio': $color-greens-pistachio
+  ),
+  'orange': $color-orange,
+  'oranges': (
+    'tahiti-gold': $color-oranges-tahiti-gold,
+    'web-orange': $color-oranges-web-orange
+  ),
+  'gold': $color-gold,
+  'purple': $color-purple,
+  'purples': (
+    'electric-violet': $color-purples-electric-violet,
+  ),
+  'red': $color-red
+);
+
+
+@function color($key, $variant: null) {
+  @if ($variant != null) {
+    @return map-get(map-get($color, $key), $variant);
+  }
+  @return map-get($color, $key);
+}
+
+@function color-level($color, $level: 0) {
+  // sass-lint:disable-block no-color-hex
+  // sass-lint:disable-block no-color-literals
+  $base: if($level < 0, #000, #fff);
+  @return mix($base, $color, abs($level) * $color-interval);
+}
+
+@function hsla-str($color) {
+  $hue: (hue($color) / 1deg);
+  @return unquote('hsl(#{round($hue)}, #{round(saturation($color))}, #{round(lightness($color))})');
+}
+
+@function rgba-str($color) {
+  @return unquote('rgb(#{red($color)}, #{green($color)}, #{blue($color)})');
+}
+
+@mixin swatch($name, $value) {
+  $rgba: rgba-str($value);
+  $hsla: hsla-str($value);
+
+  &--#{$name} {
+    .colors__swatch {
+      background-color: $value;
+    }
+
+    .colors__label {
+      &:before {
+        content: '#{$name}\A #{$value}\A #{$rgba}\A #{$hsla}';
+      }
+    }
+  }
+}

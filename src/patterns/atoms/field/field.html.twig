@@ -1,0 +1,51 @@
+{#
+/**
+ * @file
+ * A field pattern atom.
+ *
+ * @var string id
+ *   The field ID.
+ * @var string name
+ *   The optional form name for the field.
+ * @var string value
+ *   The optional value for the field.
+ * @var string size
+ *   The optional size for the field display.
+ * @var bool type
+ *   The type of field widget to use.
+ * @var string label
+ *   Optional label for the field.
+ * @var string class
+ *   Any additional classes for the field.
+ *
+ * @todo Finish implementation as on http://www.patternfly.org/pattern-library/widgets/#forms
+ */
+#}
+{% set size_class = 'col-xs-12 col-sm-6' %}
+{% if size == 'small' %}
+  {% set size_class = 'col-xs-12 col-sm-6 col-md-4 col-lg-4' %}
+{% elseif size == 'large' %}
+  {% set size_class = 'col-xs-12' %}
+{% endif %}
+{% set label_class = 'field__label control-label' %}
+{% if url|default() %}{% set type = 'link' %}{% endif %}
+<div class="field {{ size_class -}}
+  {%- if type|default() %} field--{{ type }}{% endif %} {{ class }}">
+  {% if type|default() -%}
+    {% include '@rhcOpsLib/atoms/field/field_' ~ type ~ '.html.twig' %}
+  {%- else -%}
+    <label class="{{ label_class }}">
+      {{ label }}
+      {% if help_text|default() -%}
+        {%
+        include '@rhcOpsLib/atoms/field/field_help.html.twig' with {
+          'text': help_text,
+        } only
+        %}
+      {%- endif %}
+    </label>
+    <div class="field__value">
+      {{ value }}
+    </div>
+  {%- endif %}
+</div>

@@ -1,0 +1,23 @@
+// PatternFly Search Result
+//
+// An implementation of PatternFly search result.
+//
+// Markup: search_result.html.twig
+//
+// Styleguide PatternFly.SearchResult
+
+@import '../../globals/colors';
+
+.search-result-meta {
+  color: $color-grays-oslo-gray;
+}
+
+.search-result-meta,
+.search-result-snippet {
+  strong,
+  em {
+    background-color: $color-whites-pearl-lusta;
+    font-style: normal;
+    font-weight: normal;
+  }
+}

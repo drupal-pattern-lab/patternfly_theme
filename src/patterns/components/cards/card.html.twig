@@ -1,0 +1,63 @@
+{#
+/**
+ * Provides a PatternFly card pattern.
+ *
+ * @var string type
+ *   Optional type of card, in CSS class format.
+ *   Examples:
+ *   - aggregate-status
+ *   - trend
+ *   - utilization-bar
+ *   - utilization-trend
+ * @var string variant
+ *   Optional card display variant, in CSS class format.
+ *   Examples:
+ *   - mini
+ * @var bool accent
+ *   True if the card is to be displayed with a top accent.
+ *   Useful if the card it located at the top of a dashboard view.
+ * @var array title
+ *   - string text
+ *     The title of the card.
+ *   - string url
+ *     Optional URL for the card title.
+ * @var string body
+ *   The body of the card.
+ * @var string footer
+ *   Optional footer for the card.
+ */
+#}
+{% if subtitle|default or timeframe|default() %}{% set heading = true %}{% endif %}
+{% if type == "card" %}{% set type = "" %}{% endif %}
+<div class="card-pf{% if accent %} card-pf-accented{% endif %}{% if type|default() %} card-pf-{{ type }}{% endif %}{% if variant|default() %} card-pf-{{ type }}-{{ variant }}{% endif %}">
+  {% if heading|default() -%}
+    <div class="card-pf-heading">
+  {%- endif %}
+  <h2 class="card-pf-title">
+    {% block title -%}
+      {% if title.url|default() -%}
+        <a href="{{ title.url }}">
+      {% endif %}
+      {{ title.text }}
+      {% if title.url|default() -%}
+        </a>
+      {% endif %}
+    {%- endblock %}
+  </h2>
+  {% if heading|default() -%}
+    </div>
+  {%- endif %}
+  {% if subtitle|default() %}<h3 class="card-pf-subtitle">{{ subtitle }}</h3>{% endif %}
+  <div class="card-pf-body">
+    {% block body -%}
+      {{ body.text }}
+    {%- endblock %}
+  </div>
+  {% block footer -%}
+    {% if footer|default() -%}
+      <div class="card-pf-footer">
+        {{ footer.text }}
+      </div>
+    {%- endif %}
+  {%- endblock %}
+</div>

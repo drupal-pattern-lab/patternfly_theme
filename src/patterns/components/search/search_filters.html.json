@@ -1,0 +1,72 @@
+{
+  "form": {
+    "action": "/search/test",
+    "charset": "UTF-8",
+    "method": "get",
+    "attributes": {
+      "class": [
+        "filter-panel-pf-category"
+      ]
+    }
+  },
+  "categories": [
+    {
+      "title": "By Type",
+      "items": [
+        {
+          "title": "Companies",
+          "value": "bundle:company",
+          "count": 45,
+          "active": true
+        },
+        {
+          "title": "People",
+          "value": "bundle:user",
+          "count": 12,
+          "active": true
+        },
+        {
+          "title": "Products",
+          "value": "bundle:partner_product",
+          "count": 3,
+          "active": true
+        },
+        {
+          "title": "Projects",
+          "value": "bundle:project_created",
+          "count": 18,
+          "active": false
+        }
+      ]
+    },
+    {
+      "title": "By Zone",
+      "items": [
+        {
+          "title": "Middleware",
+          "value": "ss_rhc_zone_name:company",
+          "count": 45,
+          "active": false
+        },
+        {
+          "title": "RHEL",
+          "value": "bundle:user",
+          "count": 12,
+          "active": true
+        },
+        {
+          "title": "OpenShift",
+          "value": "bundle:partner_product",
+          "count": 3,
+          "active": false
+        },
+        {
+          "title": "OpenStack",
+          "value": "bundle:project_created",
+          "count": 18,
+          "active": false
+        }
+      ]
+    }
+  ]
+}

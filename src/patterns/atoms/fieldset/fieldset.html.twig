@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * A Bootstrap fieldset pattern atom.
+ *
+ * Available variables:
+ * - collapsible: A boolean for for a collapsible fieldset.
+ * - title: Title of the <fieldset>.
+ * - children: The rendered child elements of the <fieldset>.
+ */
+#}
+
+{% if collapsible %}
+  <fieldset class="fields-section-pf" id="{{ element['#id'] }}" data-toggle="fieldset">
+    <legend class="fields-section-header-pf">
+      <span class="fa fa-angle-right field-section-toggle-pf"></span>
+      <a href="{{ element['#id'] }}" class="field-section-toggle-pf">{{ legend.title }}</a>
+    </legend>
+    <div class="fields-section-pf-children">
+      {{ children }}
+    </div>
+  </fieldset>
+{% else %}
+  <h2>{{ legend.title }}</h2>
+  <div class="fields-section-pf-children">
+    {{ children }}
+  </div>
+{% endif %}

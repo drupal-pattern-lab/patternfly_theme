@@ -1,0 +1,68 @@
+{#
+/**
+ * @file
+ * A PatternFly Dropdown pattern
+ *
+ * Defaults to a 'kebab' display if no text or icon is provided.
+ *
+ * @var string text
+ *   The dropdown text.
+ * @var hash icon
+ *   Optional icon for the dropdown.
+ *   @see '@rhcOpsLib/atoms/icon/icon.html.twig'
+ * @var string align
+ *    Optional alignment for the menu. Default: 'left'.
+ *    - left
+ *    - right
+ * @var bool button
+ *    True if the dropdown should be a button.
+ * @var string tag
+ *    Optional tag to use for the dropdown. Default: 'div'.
+ * @var string class
+ *    Optional additonal classes for the dropdown.
+ */
+#}
+{% import '@rhcOpsLib/macros/menu.html.twig' as menumacro %}
+{% set kebab = false %}
+{% if not text|default and not icon|default -%}
+  {% set class = 'dropdown-kebab-pf' ~ ' ' ~ class|default %}
+  {% set button = true %}
+  {% set kebab = true %}
+{% endif %}
+<{{ tag|default('div') }} class="dropdown {{ class|default }}">
+  {% if button|default -%}
+    <button class="btn btn-link dropdown-toggle" type="button" data-toggle="dropdown">
+  {%- else -%}
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+  {%- endif %}
+  {% if kebab -%}
+    {%
+    include '@rhcOpsLib/atoms/icon/icon.html.twig' with {
+      "lib": "fa",
+      "name": "ellipsis-v"
+    } only
+    %}
+  {%- else -%}
+    {% if icon|default -%}
+      {% include '@rhcOpsLib/atoms/icon/icon.html.twig' with icon only %}
+    {%- endif %}
+    {{ text|default('') }} <b class="caret"></b>
+  {%- endif %}
+  {% if button|default -%}
+    </button>
+  {%- else -%}
+    </a>
+  {%- endif %}
+  {% if align|default %}
+    {% set menu_class = 'dropdown-menu-' ~ align %}
+  {% endif %}
+  {%
+  set classes = {
+    'menu': 'dropdown-menu',
+    'submenu': 'dropdown-submenu',
+    'header': 'dropdown-header',
+    'class': menu_class,
+  }
+  %}
+  {{ menumacro.menu(links, classes) }}
+</{{ tag|default('div') }}>

@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * A Fields Overview pattern.
+ *
+ * @var string title
+ *   The title of the fields overview.
+ * @var object[] fields
+ *   The fields to display in the overview.
+ *   @see "@rhcOpsLib/atoms/field/field.html.twig"
+ * @var object[] sidebards
+ *   Optional sidebars to display.
+ *   - object sidebar
+ *     - object[] fields
+ *       The fields to display inside the sidebar.
+ * @var string class
+ *   Any additional classes.
+ *
+ * @see http://bootstrapswitch.com/
+ */
+#}
+<div class="fields-overview {{ class|default() }}">
+  <h2 class="fields-overview__title">{{ title }}</h2>
+  <div class="fields-overview__fields col-xs-12 col-md-8">
+    {% for field in fields -%}
+      {% include "@rhcOpsLib/atoms/field/field.html.twig" with field only %}
+    {%- endfor %}
+  </div>
+  {% if sidebars|default() -%}
+    <div class="fields-overview__sidebars col-xs-12 col-md-4">
+      {% for sidebar in sidebars -%}
+        <div class="fields-overview__sidebar">
+          {% for field in sidebar.fields -%}
+            <div class="row">
+              {% include "@rhcOpsLib/atoms/field/field.html.twig" with field only %}
+            </div>
+          {%- endfor %}
+        </div>
+      {%- endfor %}
+    </div>
+  {%- endif %}
+</div>

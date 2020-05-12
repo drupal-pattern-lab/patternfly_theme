@@ -1,0 +1,24 @@
+{
+  "notifications": [
+    {
+      "message": "<strong>Hey there is a problem!</strong> Yeah this is really messed up and you should <a href='#' class='alert-link'>know about it</a>.",
+      "type": "error",
+      "dismissible": true
+    },
+    {
+      "message": "<strong>There might be a problem here!</strong> We are not really sure, but <a href='#' class='alert-link'>it might be bad</a>.",
+      "type": "warning",
+      "dismissible": true
+    },
+    {
+      "message": "<strong>Great job!</strong> This is really working out <a href='#' class='alert-link'>great for us</a>.",
+      "type": "success",
+      "dismissible": true
+    },
+    {
+      "message": "<strong>This is some general information.</strong> You should <a href='#' class='alert-link'>know about this</a>.",
+      "type": "info",
+      "dismissible": true
+    }
+  ]
+}

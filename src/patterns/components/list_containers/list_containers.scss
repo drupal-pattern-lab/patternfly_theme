@@ -1,0 +1,71 @@
+// RHC Ops Containers List
+//
+// An implementation of the containers list.
+//
+// Markup: list_containers.html.twig
+//
+// Styleguide Patterns.ContainersList
+
+@import '../../globals/colors';
+
+$container-dark-red: #{color-level($color-reds-bright-red, -7)};
+
+$grades: (
+  $color-greens-apple,
+  $color-greens-pistachio,
+  $color-oranges-web-orange,
+  $color-oranges-tahiti-gold,
+  $color-reds-bright-red,
+  $container-dark-red
+);
+
+%list-view-pf {
+  &__container-health {
+    list-style: none;
+  }
+
+  &__container-grade {
+    display: inline-block;
+
+    @for $i from 1 to length($grades) {
+      &:nth-child(#{$i}) {
+        background: $color-white;
+        border-bottom: solid 5px nth($grades, $i);
+        color: $color-grays-oslo-gray;
+
+        %list-view-pf__container-grade--current {
+          background: nth($grades, $i);
+          color: $color-white;
+        }
+      }
+    }
+  }
+
+  &--containers {
+    %list-view-pf-additional-info-item {
+      flex-grow: 1;
+    }
+  }
+}
+
+.list-view-pf {
+  &-additional-info-item {
+    @extend %list-view-pf-additional-info-item;
+  }
+
+  &__container-health {
+    @extend %list-view-pf__container-health;
+  }
+
+  &__container-grade {
+    @extend %list-view-pf__container-grade;
+
+    &.current {
+      @extend %list-view-pf__container-grade--current;
+    }
+  }
+
+  &--containers {
+    @extend %list-view-pf--containers;
+  }
+}

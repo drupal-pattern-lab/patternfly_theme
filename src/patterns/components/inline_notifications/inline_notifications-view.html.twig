@@ -1,0 +1,7 @@
+{% for notification in notifications %}
+  {% include '@rhcOpsLib/components/inline_notifications/inline_notification.html.twig' with {
+    'message': notification.message,
+    'type': notification.type,
+    'dismissible': notification.dismissible
+  } %}
+{% endfor %}

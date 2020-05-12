@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * An RHC Form Label pattern atom.
+ *
+ * @var string id
+ *   A label element ID.
+ * @var string title
+ *   A label element title.
+ * @var string description
+ *   A label element description.
+ */
+#}
+
+{% if title is not empty -%}
+  <label class="control-label" for="{{ id }}">{{ title }}
+    {% if description|default() -%}
+      <a tabindex="0" role="button"
+        {% include '@rhcOpsLib/atoms/popover/popover.html.twig' with {
+          "content": description,
+          "close": false,
+        } only %}
+         data-trigger="focus" class="popover-pf-info" data-placement="top"><span class="pficon pficon-info"></span>
+      </a>
+    {%- endif %}
+  </label>
+{%- endif %}

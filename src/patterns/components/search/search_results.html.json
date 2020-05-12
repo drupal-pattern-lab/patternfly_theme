@@ -1,0 +1,46 @@
+{
+  "title": "Search Results",
+  "rows": [
+    {
+      "title": "Crunchy Data",
+      "link": "/node/10",
+      "meta": [
+        "Company",
+        "crunchydata",
+        "Last Update 1 day ago"
+      ],
+      "snippet": "Crunchy Data is a leading provider of trusted open source <em>PostgreSQL</em> technology, support and training. Crunchy offers Crunchy Certified <em>PostgreSQL</em>, the most advanced pure open source RDBMS on the market."
+    },
+    {
+      "title": "Crunchy <em>PostgreSQL</em> 9.6 Backup",
+      "link": "/node/11",
+      "meta": [
+        "Product",
+        "Crunchy Data",
+        "Last Update 3 days ago"
+      ],
+      "snippet": "Meant to be executed upon demand, the Crunchy backup container will run <em>pg_basebackup</em> against a running database container and write the backup files to a mounted directory."
+    },
+    {
+      "title": "Crunchy <em>PostgreSQL</em> 9.6 Backup RHEL-test",
+      "link": "/node/12",
+      "meta": [
+        "RHEL Project",
+        "Crunchy Data",
+        "<em>PostgreSQL</em> 9.6",
+        "Last Update 2 days ago"
+      ],
+      "snippet": "Meant to be executed upon demand, the Crunchy backup container will run <em>pg_basebackup</em> against a running database container and write the backup files to a mounted directory."
+    },
+    {
+      "title": "Jim Whitehurst",
+      "link": "user/2",
+      "meta": [
+        "User",
+        "Red Hat",
+        "Last Update 1 day ago"
+      ],
+      "snippet": "<a href='mailto:noreply@redhat.com'>noreply@redhat.com</a>"
+    }
+  ]
+}

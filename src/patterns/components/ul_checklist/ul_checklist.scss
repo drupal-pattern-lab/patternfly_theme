@@ -1,0 +1,47 @@
+// RHC Ops UL Checklist
+//
+// A checklist display in a static format.
+//
+// Markup: ul_checklist.html.twig
+//
+// Styleguide Patterns.ChecklistUL
+
+@import '../../globals/breakpoints';
+@import '../../globals/colors';
+
+%ul-checklist {
+  list-style: none;
+
+  &__icon {
+    color: $color-grays-oslo-gray;
+    font-size: 2.6rem;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  &__item {
+    line-height: 3;
+
+    &--checked {
+      %ul-checklist__icon {
+        color: $color-blues-cerulean;
+      }
+    }
+  }
+}
+
+.ul-checklist {
+  @extend %ul-checklist;
+
+  &__item {
+    @extend %ul-checklist__item;
+
+    &--checked {
+      @extend %ul-checklist__item--checked;
+    }
+  }
+
+  &__icon.fa {
+    @extend %ul-checklist__icon;
+  }
+}

@@ -1,0 +1,21 @@
+{#
+/**
+ * Provides a container health index.
+ *
+ * @var hash[] health
+ *   - string text
+ *     The text representing the health grade.
+ *   - bool current
+ *     True if this is the current grade for the container.
+#}
+<ul class="container-health">
+  {% for grade in health -%}
+    {% set grade_class = '' %}
+    {% if grade.current %}
+      {% set grade_class = 'container-health__grade--current' %}
+    {% endif %}
+    <li class="container-health__grade {{ grade_class }}">
+      {{ grade.text }}
+    </li>
+  {%- endfor %}
+</ul>

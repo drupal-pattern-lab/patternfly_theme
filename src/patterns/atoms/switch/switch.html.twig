@@ -1,0 +1,70 @@
+{#
+/**
+ * @file
+ * A Bootstrap switch pattern atom.
+ *
+ * @var string id
+ *   The switch ID.
+ * @var string name
+ *   The optional form name for the switch.
+ * @var string value
+ *   The optional active value for the switch.
+ * @var bool active
+ *   True if the switch is active.
+ * @var string label
+ *   Optional label for the switch.
+ * @var string type
+ *   Optional type of switch: radio, checkbox (default).
+ * @var string class
+ *   Any additional classes for the switch.
+ * @var bool disabled
+ *   True if the switch should be disabled.
+ * @var bool readonly
+ *   True if the switch should be read-only.
+ * @var array options
+ *   Additional options for the switch, CSS-class format.
+ *   - string size
+ *     The checkbox size: mini, small, normal, large.
+ *   - bool animate
+ *     True if the switch should animate (default).
+ *   - bool indeterminate
+ *     True to set to indeterminate state.
+ *   - bool inverse
+ *     True to invert the switch direction.
+ *   - bool radio-all-off
+ *     True to allow the radio to be unset.
+ *   - string on-color
+ *     Color class for the on option: 'primary' (default).
+ *   - string off-color
+ *     Color class for the off option: 'primary' (default).
+ *   - string on-text
+ *     Text for the on option: 'ON' (default).
+ *   - string off-text
+ *     Text for the off option: 'OFF' (default).
+ *   - string wrapper-class
+ *     Container element class(es).
+ *   @see http://bootstrapswitch.com/options.html for additional options.
+ *
+ * @see http://bootstrapswitch.com/
+ */
+#}
+{% if label|default() -%}
+  <label class="{{ label_class }}">
+    {{ label }}
+{%- endif %}
+{% if class|default() %}
+  <div class="{{ class }}">
+{% endif %}
+<input class="bootstrap-switch" id="bootstrap-switch-{{ id }}" type="
+  {{- type|default('checkbox') }}"
+  {%- if name|default() %} name="{{ name }}"{% endif -%}
+  {%- if value|default() %} value="{{ value }}"{% endif -%}
+  {%- if readonly|default() %} readonly="{{ readonly }}"{% endif -%}
+  {%- for name, option in options %} data-{{ name }}="{{ option }}"{% endfor -%}
+  {%- if active %} checked{% endif %}{% if disabled|default() %} disabled{% endif %}>
+{% if class|default() %}
+  </div>
+{% endif %}
+{% if label|default() -%}
+  </label>
+{%- endif %}

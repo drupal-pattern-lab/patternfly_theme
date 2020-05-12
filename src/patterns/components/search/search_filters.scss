@@ -1,0 +1,24 @@
+// PatternFly Search Filters
+//
+// An implementation of the PatternFly search filters.
+//
+// Markup: search_filters.html.twig
+//
+// Styleguide PatternFly.SearchFilters
+
+.filter-panel-pf {
+  .filter-panel-pf-category-title {
+    border: 0;
+    font-size: inherit;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+
+  .filter-panel-pf-category-item {
+    padding-left: 6px;
+  }
+}

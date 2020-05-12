@@ -1,0 +1,163 @@
+{
+  "selectable": "true",
+  "items": [
+    {
+      "heading": "Event One",
+      "text": "The following snippet of text is <a href=\"#\">rendered as link text</a>.",
+      "actions": [
+        {
+          "type": "button",
+          "options": {
+            "text": "Action",
+            "url": "#"
+          }
+        },
+        {
+          "type": "dropdown",
+          "options": {
+            "links": [
+              {
+                "text": "Action",
+                "url": "#"
+              },
+              {
+                "text": "Another Action",
+                "url": "#"
+              },
+              {
+                "text": "Something Else Here",
+                "url": "#"
+              },
+              {
+                "divider": true
+              },
+              {
+                "text": "Separated Link",
+                "url": "#"
+              }
+            ],
+            "class": "pull-right",
+            "align": "right"
+          }
+        }
+      ],
+      "icon": {
+        "lib": "fa",
+        "name": "plane"
+      },
+      "info": [
+        {
+          "icon": {
+            "lib": "pficon",
+            "name": "screen"
+          },
+          "header": "8",
+          "subheader": "Hosts"
+        },
+        {
+          "icon": {
+            "lib": "pficon",
+            "name": "cluster"
+          },
+          "header": "6",
+          "subheader": "Clusters"
+        },
+        {
+          "icon": {
+            "lib": "pficon",
+            "name": "container-node"
+          },
+          "header": "10",
+          "subheader": "Nodes"
+        },
+        {
+          "icon": {
+            "lib": "pficon",
+            "name": "image"
+          },
+          "header": "8",
+          "subheader": "Images"
+        }
+      ]
+    },
+    {
+      "heading": "Event Two",
+      "text": "The following snippet of text is <a href=\"#\">rendered as link text</a>.",
+      "actions": [
+        {
+          "type": "button",
+          "options": {
+            "text": "Action",
+            "url": "#"
+          }
+        },
+        {
+          "type": "dropdown",
+          "options": {
+            "links": [
+              {
+                "text": "Action",
+                "url": "#"
+              },
+              {
+                "text": "Another Action",
+                "url": "#"
+              },
+              {
+                "text": "Something Else Here",
+                "url": "#"
+              },
+              {
+                "divider": true
+              },
+              {
+                "text": "Separated Link",
+                "url": "#"
+              }
+            ],
+            "class": "pull-right",
+            "align": "right"
+          }
+        }
+      ],
+      "icon": {
+        "lib": "fa",
+        "name": "magic"
+      },
+      "info": [
+        {
+          "icon": {
+            "lib": "pficon",
+            "name": "screen"
+          },
+          "header": "4",
+          "subheader": "Hosts"
+        },
+        {
+          "icon": {
+            "lib": "pficon",
+            "name": "cluster"
+          },
+          "header": "2",
+          "subheader": "Clusters"
+        },
+        {
+          "icon": {
+            "lib": "pficon",
+            "name": "container-node"
+          },
+          "header": "11",
+          "subheader": "Nodes"
+        },
+        {
+          "icon": {
+            "lib": "pficon",
+            "name": "image"
+          },
+          "header": "6",
+          "subheader": "Images"
+        }
+      ]
+    }
+  ]
+}

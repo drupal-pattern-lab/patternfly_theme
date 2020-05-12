@@ -1,0 +1,40 @@
+{#
+/**
+ * @file
+ * A field pattern atom.
+ *
+ * @var string id
+ *   The switch ID.
+ * @var string name
+ *   The optional form name for the switch.
+ * @var string value
+ *   The optional active value for the switch.
+ * @var string size
+ *   The optional size for the field display.
+ * @var bool active
+ *   True if the switch is active.
+ * @var string label
+ *   Optional label for the switch.
+ * @var string class
+ *   Any additional classes for the switch.
+ *
+ * @see http://bootstrapswitch.com/
+ */
+#}
+{% set active = false %}
+{% if value != '0' and value|default() %}
+  {% set active = true %}
+{% endif %}
+{%
+include '@rhcOpsLib/atoms/switch/switch.html.twig' with {
+  'id': 'switch' ~ name,
+  'label': label,
+  'name': name,
+  'value': value,
+  'active': active,
+  'readonly': readonly|default(false),
+  'class': 'field__widget',
+  'label_class': label_class,
+  'options': options,
+} only
+%}

@@ -1,0 +1,67 @@
+{
+  "tag": "span",
+  "text": "Jane Doe",
+  "icon": {
+    "lib": "pficon",
+    "name": "user"
+  },
+  "links": [
+    {
+      "text": "Link",
+      "url": "#"
+    },
+    {
+      "text": "Another link",
+      "url": "#"
+    },
+    {
+      "text": "Something else here",
+      "url": "#"
+    },
+    {
+      "divider": true
+    },
+    {
+      "text": "More options",
+      "menu": [
+        {
+          "text": "Link",
+          "url": "#"
+        },
+        {
+          "text": "Another link",
+          "url": "#"
+        },
+        {
+          "text": "Something else here",
+          "url": "#"
+        },
+        {
+          "divider": true
+        },
+        {
+          "header": true,
+          "text": "Nav header"
+        },
+        {
+          "text": "Separated link",
+          "url": "#"
+        },
+        {
+          "divider": true
+        },
+        {
+          "text": "One more separated link",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "divider": true
+    },
+    {
+      "text": "One more separated link",
+      "url": "#"
+    }
+  ]
+}

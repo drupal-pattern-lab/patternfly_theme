@@ -1,0 +1,62 @@
+{#
+/**
+ * @file
+ * An Ops Dashboard Header pattern.
+ *
+ * @var hash image
+ *   @see '@rhcOpsLib/atoms/image.html.twig'.
+ * @var hash subheader
+ *   Subheader options.
+ *   - string text
+ *     The subheader text.
+ *   - string url
+ *     Optional subheader URL link.
+ * @var string header
+ *   The header text.
+ * @var string[] labels
+ *   Optional array of labels to display.
+ * @var hash[] actions
+ *   @see '@rhcOpsLib/atoms/button/button.html.twig'.
+ */
+#}
+{% set image_classes = { class: image.attributes.class|default([])|merge(['ops-header__image']) } %}
+{% set image_attributes = image.attributes|default([])|merge(image_classes) %}
+<div class="ops-header">
+  <div class="ops-header__image-container">
+    {%
+    include '@rhcOpsLib/atoms/image/image.html.twig' with {
+    'src': image.src,
+    'alt': image.alt,
+    'attributes': image_attributes,
+    'sources': image.sources,
+    } only
+    %}
+  </div>
+  <div class="ops-header__headers">
+    {% if subheader.text|default() -%}
+      {% if subheader.url|default() -%}
+        <a href="{{ subheader.url }}" class="ops-header__subheader">{{ subheader.text }}</a>
+      {%- else -%}
+        <div class="ops-header__subheader">{{ subheader.text }}</div>
+      {%- endif %}
+    {%- endif %}
+    <h1 class="ops-header__header">{{ header }}</h1>
+  </div>
+  <div class="ops-header__labels">
+    {% for label in labels %}
+      <div class="badge ops-header__label">{{ label }}</div>
+    {% endfor %}
+  </div>
+  <div class="ops-header__actions col-xs-12 col-lg-5">
+    {% for button in actions -%}
+      {% set button = button|merge(
+        {
+          option: button.option|default('default'),
+          size: button.size|default('lg'),
+          attributes: button.attributes|default([]),
+          class: 'ops-header__action'
+        }) %}
+      {% include '@rhcOpsLib/atoms/button/button.html.twig' with button only %}
+    {%- endfor %}
+  </div>
+</div>

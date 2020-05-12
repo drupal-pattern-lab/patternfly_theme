@@ -1,0 +1,31 @@
+{
+  "form": {
+    "id": "example-search-form-id",
+    "action": "https://www.google.com/search",
+    "charset": "UTF-8",
+    "method": "get",
+    "attributes": {
+      "class": [
+        "search-pf",
+        "has-button"
+      ]
+    },
+    "search": {
+      "id": "q",
+      "name": "q",
+      "placeholder": "Search",
+      "value": "PostgreSQL pg_basebackup"
+    },
+    "submit": {
+      "name": "submit",
+      "value": "Search"
+    },
+    "inputs": [
+      {
+        "type": "hidden",
+        "name": "sitesearch",
+        "value": "patternfly.org"
+      }
+    ]
+  }
+}

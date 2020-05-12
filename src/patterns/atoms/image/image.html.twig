@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * An image pattern atom.
+ *
+ * @var string src
+ *   URL to an image.
+ * @var string alt
+ *   The image alternate text.
+ * @var array attributes
+ *   An optional array of image attributes.
+ * @var array sources
+ *   An optional array of image sources.
+ * @var array srcset
+ *   An optional set of image sources.
+ * @var string datasrc
+ *   A lazy-loaded image URL.
+ */
+#}
+{% import '@rhcOpsLib/macros/attributes.html.twig' as attr_macro %}
+<img src="{{ src }}" alt="{{ alt }}"{{ attr_macro.attr(attributes) }}>

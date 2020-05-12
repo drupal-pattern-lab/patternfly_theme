@@ -1,0 +1,58 @@
+// PatternFly Navigation
+//
+// An implementation of the PatternFly navigation.
+//
+// Markup: navigation.html.twig
+//
+// Styleguide PatternFly.Navigation
+
+$color-navigation-search: rgb(35, 35, 35);
+$color-navigation-boder: rgb(55, 55, 55);
+$color-navigation-icon: rgb(219, 218, 218);
+$color-pf-black-300: rgb(209, 209, 209);
+$rgba: rgba(255, 255, 255, .3);
+
+.navbar-utility {
+  > li {
+    padding-top: 3px;
+  }
+
+  .search-pf {
+    width: 275px;
+
+    .search-pf-input-group {
+      display: none;
+    }
+
+    .btn {
+      background: transparent none;
+      border: 0;
+      color: $color-pf-black-300 !important;
+
+      &:hover {
+        background: $color-navigation-search;
+        border-left-color: $color-navigation-boder;
+      }
+    }
+
+    .pficon-search:before {
+      left: 1px;
+      position: relative;
+      top: 1px;
+    }
+
+    .form-control {
+      background: $rgba;
+      border: 0;
+      box-shadow: none;
+      color: $color-navigation-icon;
+      height: 23px;
+    }
+
+    .pficon-close {
+      color: $color-navigation-icon;
+      position: relative;
+      top: -1px;
+    }
+  }
+}

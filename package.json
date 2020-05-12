@@ -1,0 +1,39 @@
+{
+  "name": "patternfly_theme",
+  "version": "1.0.0",
+  "description": "PatternFly D8 Theme",
+  "main": "styleguide/dist/index.html",
+  "dependencies": {},
+  "devDependencies": {
+    "@patternfly/patternfly": "^2.71.6",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-changed": "^4.0.2",
+    "mkdirp": "^1.0.4"
+  },
+  "//": "The postinstall script is needed to work-around this Drupal core bug: https://www.drupal.org/node/2329453",
+  "scripts": {
+    "postinstall": "find node_modules/ -name '*.info' -type f -delete; find lib/ -name .git -type d | xargs rm -rf;",
+    "build": "gulp build",
+    "lint": "gulp lint",
+    "styleguide": "gulp styleguide",
+    "test": "karma",
+    "update-dep": "gulp update-dep",
+    "watch": "gulp watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cybtachyon/patternfly_theme.git"
+  },
+  "keywords": [
+    "PatternFly",
+    "Drupal",
+    "Theme"
+  ],
+  "author": "Derek Reese",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cybtachyon/patternfly_theme/issues"
+  },
+  "homepage": "https://github.com/cybtachyon/patternfly_theme#readme"
+}

@@ -1,0 +1,6 @@
+{
+  "type": "button",
+  "text": "A tooltip button",
+  "tooltip": "Tooltip contents go here",
+  "placement": "bottom"
+}

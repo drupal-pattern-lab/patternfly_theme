@@ -1,0 +1,7 @@
+{
+  "collapsible": true,
+  "legend": {
+    "title": "Example Fieldset"
+  },
+  "children": "<ul><li>Child Item 1</li><li>Child Item 2</li><li>Child Item 3</li><uli>"
+}

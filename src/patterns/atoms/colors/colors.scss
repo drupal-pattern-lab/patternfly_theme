@@ -1,0 +1,87 @@
+// Colors
+//
+// The global framework colors.
+//
+// Markup: colors.html.twig
+//
+// Styleguide Globals.Colors
+
+@import '../../globals/colors';
+
+$color-padding: 5px;
+
+//// Based on `https://codepen.io/FStop/pen/ojrAq`.
+%colors {
+  align-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  overflow: hidden;
+  padding: 2em 0;
+  text-align: center;
+
+  &__item {
+    background: $color-white;
+    border: solid 1px $color-grays-oslo-gray;
+    display: inline-block;
+    margin: 0 1em 1em 0;
+    overflow: hidden;
+    padding: $color-padding;
+    width: 14rem;
+  }
+
+  &__swatch {
+    border: 1px solid color-level($color-grays-oslo-gray, 2);
+    border-bottom-width: 0;
+    display: block;
+    height: 0;
+    margin: 0 auto;
+    padding-bottom: 100%;
+    width: 100%;
+  }
+
+  &__label {
+    display: block;
+    height: 100%;
+    left: -#{$color-padding};
+    padding: $color-padding;
+    position: relative;
+    text-align: left;
+    white-space: pre-line;
+    width: calc(100% + #{2 * $color-padding});
+  }
+}
+
+$colors: ();
+@each $name, $value in $color {
+  @if (type-of($value) == 'map') {
+    @each $map-name, $map-value in $value {
+      $colors: map-merge($colors, ($map-name: $map-value));
+    }
+  }
+  @else {
+    $colors: map-merge($colors, ($name: $value));
+  }
+}
+
+.colors {
+  @each $name, $value in $colors {
+    @include swatch($name, $value);
+  }
+
+  @extend %colors;
+
+  &__item {
+    @extend %colors__item;
+  }
+
+  &__swatch {
+    @extend %colors__swatch;
+  }
+
+  &__label {
+    @extend %colors__label;
+  }
+}
+
+$export-colors: export('atoms/colors/colors.html.json', ('colors': $colors));

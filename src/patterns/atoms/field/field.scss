@@ -1,0 +1,18 @@
+// Field
+//
+// An implementation of a Field.
+//
+// Markup: field.html.twig
+//
+// Styleguide Atoms.Field
+
+%field {
+
+  &__label {
+    font-weight: 600;
+  }
+}
+
+.field__label {
+  @extend %field__label;
+}

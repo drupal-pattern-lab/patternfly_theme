@@ -1,0 +1,57 @@
+{#
+/**
+ * @file
+ * Provides an unordered list menu.
+ *
+ * @var hash[] links
+ *   The links to display in the menu.
+ *   - string text
+ *     The text to display for the link or sub-menu.
+ *   - string url
+ *     URL to use if no sub-menu is provided.
+ *   - bool divider
+ *     True if this entry is a divider. If so, other options are ignored.
+ *   - hash[] menu
+ *     Sub-links in the above hash format.
+ * @var hash classes
+ *   The classes to use for the menu.
+ *   - string menu
+ *     The menu class.
+ *   - string submenu
+ *     The submenu class.
+ *   - string header
+ *     The header link class.
+ *   - string divider
+ *     The divider link class.
+ *   - string class
+ *     Class for the entire menu.
+#}
+{% macro menu(links, classes) %}
+  {% import _self as menumacro %}
+  <ul class="{{ classes.menu|default('menu') }} {{ classes.class|default('') }}">
+  {% for link in links %}
+    {% if link.menu|default() %}
+      <li class="{{ classes.submenu|default('menu-submenu') }}">
+        <a tabindex="-1" href="#">{{ link.text }}</a>
+        {%
+        set subclasses = {
+          'menu': classes.menu,
+          'submenu': classes.submenu,
+          'header': classes.header,
+          'divider': classes.divider,
+        }
+        %}
+        {{ menumacro.menu(link.menu, subclasses) }}
+      </li>
+    {% elseif link.header|default() %}
+      <li class="{{ classes.header|default('menu-header') }}">{{ link.text }}</li>
+    {% elseif link.divider|default() %}
+      <li class="{{ classes.divider|default('divider')}}"></li>
+    {% else %}
+      <li>
+        <a href="{{ link.url }}">{{ link.text }}</a>
+      </li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+{% endmacro %}

@@ -1,0 +1,46 @@
+{#
+/**
+ * @file
+ * A PatternFly search results atom.
+ *
+ * - string title
+ *     A search results title.
+ * - string empty
+ *     An empty search result message.
+ * @var object[] rows
+ *   An array of search results rows.
+ *     - object[] row
+ *       A single search result.
+ *     - string title
+ *         A search result title.
+ *     - string link
+ *         A search result link.
+ *     - array meta
+ *         An array of search result data.
+ *     - string snippet
+ *         A search result snippet.
+ */
+#}
+
+{% if title|default() %}
+  <h2>{{ title }}</h2>
+{% endif %}
+
+{% if rows|length %}
+  <ol class="search-results">
+    {% for row in rows -%}
+    <li>
+      {%
+        include '@rhcOpsLib/components/search/search_result.html.twig' with {
+          "title": row.title,
+          "link": row.link,
+          "meta": row.meta,
+          "snippet": row.snippet
+        } only
+      %}
+    </li>
+    {%- endfor %}
+  </ol>
+{% else %}
+  {{ empty }}
+{% endif %}

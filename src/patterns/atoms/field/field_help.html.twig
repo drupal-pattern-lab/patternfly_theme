@@ -1,0 +1,12 @@
+{#
+/**
+ * @file
+ * A Bootstrap field level help pattern atom.
+ *
+ * @var string text
+ *   The help text to display.
+ *
+ * @see http://www.patternfly.org/pattern-library/forms-and-controls/field-level-help/
+ */
+#}
+<a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-html="true" title="" data-content="{{ text|e('html_attr') }}" data-placement="top"><span class="pficon pficon-info"></span></a>

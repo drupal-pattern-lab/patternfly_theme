@@ -1,0 +1,127 @@
+{#
+/**
+ * Provides a container health index list item.
+ *
+ * @extends '@rhcOpsLib/components/lists/list.html.twig'
+ *
+ * @todo Fix Twig bug with nested extended block loops.
+ *
+ * @see '@rhcOpsLib/atoms/health/health.html.twig'
+ * @see https://github.com/twigjs/twig.js/issues/436
+ */
+#}
+<div class="list-group list-view-pf list-view-pf-view list-view-pf--containers">
+  {% for item in items -%}
+    {% set classes = '' %}
+    {% if item.type|default %}
+      {% set classes = classes ~ ' list-view-pf-' ~ item.type %}
+    {% endif %}
+    {% if item.align|default %}
+      {% set classes = classes ~ ' list-view-pf-' ~ item.align ~ '-align' %}
+    {% endif %}
+    <div class="list-group-item {{ classes }}">
+      {% if selectable -%}
+        <div class="list-view-pf-checkbox">
+          <input type="checkbox" title="{{ item.heading }}">
+        </div>
+      {% endif %}
+      <div class="list-view-pf-actions">
+        {% block actions -%}
+          {% for action in item.actions -%}
+            {%
+            set tpl = '@rhcOpsLib/atoms/'
+            ~ action.type ~ '/' ~ action.type ~ '.html.twig'
+            %}
+            {% include (tpl) with action.options only %}
+          {%- endfor %}
+        {%- endblock %}
+      </div>
+      <div class="list-view-pf-main-info">
+        <div class="list-view-pf-left">
+          {% block left -%}
+            {% if item.url|default -%}
+              <a href="{{ item.url }}">
+            {%- endif %}
+            {% if item.icon|default -%}
+              {% set icon = item.icon %}
+              {%
+              set icon_class = 'list-view-pf-icon-'
+              ~ icon.size|default('sm') ~ ' ' ~ icon.class
+              %}
+              {% set icon = icon|merge({'class': icon_class}) %}
+              {% include '@rhcOpsLib/atoms/icon/icon.html.twig' with icon %}
+            {%- endif %}
+            {% if item.date|default -%}
+              <div class="list-view-pf-calendar">
+                {{ item.date.month }}
+                <strong>{{ item.data.day }}</strong>
+              </div>
+            {%- endif %}
+            {% if item.image|default -%}
+              {%
+              include '@rhcOpsLib/atoms/image/image.html.twig' with item.image
+              %}
+            {%- endif %}
+            {% if item.url|default -%}
+              </a>
+            {%- endif %}
+          {% endblock %}
+        </div>
+        <div class="list-view-pf-body">
+          <div class="list-view-pf-description">
+            {% block description -%}
+              <div class="list-group-item-heading">
+                {% if item.url|default -%}
+                <a href="{{ url }}">
+                  {%- endif %}
+                  {{ item.heading }}
+                  {% if item.subheading|default -%}
+                    <small>{{ item.subheading }}</small>
+                  {%- endif %}
+                  {% if item.url|default -%}
+                </a>
+                {%- endif %}
+              </div>
+              <div class="list-group-item-text">
+                {{ item.text|raw }}
+              </div>
+            {%- endblock %}
+          </div>
+          <div class="list-view-pf-additional-info">
+            {% for info_item in item.info -%}
+              {% set info_classes = '' %}
+              {% if info_item.type|default %}
+                {%
+                set info_classes = info_classes
+                  ~ ' list-view-pf-additional-info-item-'
+                  ~ info_item.type
+                %}
+              {% endif %}
+              <div class="list-view-pf-additional-info-item {{ info_classes }}">
+                {% block info -%}
+                  {% if info_item.health|default -%}
+                    {%
+                    include '@rhcOpsLib/atoms/health/health.html.twig' with
+                      info_item only
+                    %}
+                  {%- else -%}
+                    {% if info_item.icon|default -%}
+                      {%
+                      include '@rhcOpsLib/atoms/icon/icon.html.twig' with
+                        info_item.icon only
+                      %}
+                    {%- endif %}
+                    <strong>{{ info_item.heading }}</strong>
+                    {% if info_item.subheading|default -%}
+                      {{ info_item.subheading }}
+                    {%- endif %}
+                  {%- endif %}
+                {%- endblock %}
+              </div>
+            {%- endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endfor %}
+</div>

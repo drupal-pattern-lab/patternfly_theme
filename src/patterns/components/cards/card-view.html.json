@@ -1,0 +1,133 @@
+{
+  "cards": [
+    [
+      {
+        "accent": true,
+        "title": {
+          "text": "Cake Service"
+        },
+        "body": {
+          "text": "<span class='fa fa-birthday-cake card-pf-icon-circle'></span>"
+        }
+      },
+      {
+        "accent": true,
+        "type": "aggregate-status",
+        "icon": {
+          "lib": "fa",
+          "name": "shield"
+        },
+        "title": {
+          "text": "Amet",
+          "url": "#"
+        },
+        "count": 20,
+        "notifications": [
+          {
+            "icon": {
+              "lib": "pficon",
+              "name": "error-circle-o"
+            },
+            "text": "4"
+          },
+          {
+            "icon": {
+              "lib": "pficon",
+              "name": "warning-triangle-o"
+            },
+            "text": "1"
+          }
+        ]
+      },
+      {
+        "accent": true,
+        "type": "aggregate-status",
+        "icon": {
+          "lib": "fa",
+          "name": "shield"
+        },
+        "title": {
+          "text": "Adipiscing",
+          "url": "#"
+        },
+        "count": 9,
+        "notifications": [
+          {
+            "icon": {
+              "lib": "pficon",
+              "name": "ok"
+            }
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "aggregate-status",
+        "variant": "mini",
+        "icon": {
+          "lib": "fa",
+          "name": "rebel"
+        },
+        "title": {
+          "text": "Ipsum"
+        },
+        "count": "0",
+        "notifications": [
+          {
+            "icon": {
+              "lib": "pficon",
+              "name": "add-circle-o"
+            },
+            "tooltip": "Add Ipsum",
+            "url": "#",
+            "class": "add"
+          }
+        ]
+      },
+      {
+        "type": "aggregate-status",
+        "variant": "mini",
+        "icon": {
+          "lib": "fa",
+          "name": "paper-plane"
+        },
+        "title": {
+          "text": "Amet",
+          "url": "#"
+        },
+        "count": "20",
+        "notifications": [
+          {
+            "icon": {
+              "lib": "pficon",
+              "name": "error-circle-o"
+            },
+            "text": "4"
+          }
+        ]
+      },
+      {
+        "type": "aggregate-status",
+        "variant": "mini",
+        "icon": {
+          "lib": "pficon",
+          "name": "cluster"
+        },
+        "title": {
+          "text": "Adipiscing",
+          "url": "#"
+        },
+        "count": "9",
+        "notifications": [
+          {
+            "icon": {
+              "lib": "pficon",
+              "name": "ok"
+            }
+          }
+        ]
+      }
+    ]
+  ]
+}

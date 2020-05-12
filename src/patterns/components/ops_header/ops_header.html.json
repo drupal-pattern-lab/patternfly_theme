@@ -1,0 +1,24 @@
+{
+  "image": {
+    "src": "components/ops_header/assets/sample_image.png",
+    "alt": "Sample Image Alt"
+  },
+  "subheader": {
+    "text": "Subheader",
+    "url": "link"
+  },
+  "header": "Header",
+  "labels": [
+    "Label"
+  ],
+  "actions": [
+    {
+      "text": "Action 1",
+      "url": "#"
+    },
+    {
+      "text": "Action 2",
+      "url": "#"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{#
+/**
+ * @file
+ * A Bootstrap popover pattern atom.
+ *
+ * @var string title
+ *   A title.
+ * @var string content
+ *   Popover content.
+ * @var bool close
+ *   A close toggle.
+ */
+#}
+
+data-toggle="popover" data-html="true" title="{{ title|e('html_attr') }}" data-content="{{ content|e('html_attr') }}" data-close="{{ close }}"

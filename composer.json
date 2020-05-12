@@ -1,0 +1,13 @@
+{
+    "name": "cybtachyon/patternfly_theme",
+    "description": "Drupal 8 PatternFly Theme",
+    "type": "theme",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Derek Reese",
+            "email": "dreese@redhat.com"
+        }
+    ],
+    "require": {}
+}

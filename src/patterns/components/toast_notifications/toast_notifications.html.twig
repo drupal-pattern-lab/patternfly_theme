@@ -1,0 +1,119 @@
+{#
+/**
+ * @file
+ * Provides a PatternFly Toast Notification pattern.
+ *
+ * @var string message
+ *   Message for the notification.
+ * @var string type
+ *   Optional type of notification. Defaults to info
+ *   Examples:
+ *   - info
+ *   - success
+ *   - warning
+ *   - error
+ * @var hash[] actions
+ *   Optional array of notification actions.
+ *   - Optional bool separator
+ *     Act as a separator instad of a link. Don't use for first action.
+ *   - string name
+ *     The name of the action.
+ *   - string url
+ *     The URL for the action.
+ *   - Optional string id
+ *     Unique identifier for action.
+ *   - Optional string class
+ *     CSS classes to apply to action
+ * @var bool dismissible
+ *   Optional flag to make notification dismissible.
+ */
+#}
+
+{#- Set classes for alert type -#}
+{% set alert_classes = ['toast-pf', 'alert'] %}
+{% set icon_classes = ['pficon'] %}
+{% if type|default() == 'success' %}
+  {% set alert_classes = alert_classes|merge(['alert-success']) %}
+  {% set icon_classes = icon_classes|merge(['pficon-ok']) %}
+{% elseif type|default() == 'warning' %}
+  {% set alert_classes = alert_classes|merge(['alert-warning']) %}
+  {% set icon_classes = icon_classes|merge(['pficon-warning-triangle-o']) %}
+{% elseif type|default() == 'error' %}
+  {% set alert_classes = alert_classes|merge(['alert-danger']) %}
+  {% set icon_classes = icon_classes|merge(['pficon-error-circle-o']) %}
+{% else %}
+  {#- Alert type info -#}
+  {% set alert_classes = alert_classes|merge(['alert-info']) %}
+  {% set icon_classes = icon_classes|merge(['pficon-info']) %}
+{% endif %}
+
+{#- Set class for dismissible alerts -#}
+{% if dismissible|default() %}
+  {% set alert_classes = alert_classes|merge(['alert-dismissable']) %}
+{% endif %}
+
+<div class="{{ alert_classes|join(' ') }}">
+  {#- Display button for dismissible alerts -#}
+  {% if dismissible|default() %}
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+      <span class="pficon pficon-close"></span>
+    </button>
+  {% endif %}
+
+  {#- Create actions menu if more than one action is specified -#}
+  {% if actions|default()|length > 1 %}
+    <div class="dropdown pull-right dropdown-kebab-pf">
+      {% spaceless %}
+        <button class="btn btn-link dropdown-toggle" type="button" id="dropdownKebabRight" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <span class="fa fa-ellipsis-v"></span>
+        </button>
+      {% endspaceless %}
+      <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight">
+        {% for action in actions[1:] %}
+          {% if action.separator|default() %}
+            <li role="separator" class="divider"></li>
+          {% else %}
+            {% set action_id = "" %}
+            {% set action_class = "" %}
+            {% if action.id|default() %}
+              {% set action_id = 'id="%id%"'|replace({'%id%': action.id}) %}
+            {% endif %}
+            {% if action.class|default() %}
+              {% set action_class = 'class="%class%"'|replace({'%class%': action.class}) %}
+            {% endif %}
+            {% spaceless %}
+              <li>
+                <a {{ action_id }} {{ action_class }} href="{{ action.url }}">
+                  {{ action.name }}
+                </a>
+              </li>
+            {% endspaceless %}
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  {#- Display first action if specified -#}
+  {% if actions|default()|length > 0 %}
+    {% set first_action = actions|first %}
+    {% set action_id = "" %}
+    {% set action_class = "" %}
+    {% if first_action.id|default() %}
+      {% set action_id = 'id="%id%"'|replace({'%id%': first_action.id}) %}
+    {% endif %}
+    {% if first_action.class|default() %}
+      {% set action_class = 'class="%class%"'|replace({'%class%': first_action.class}) %}
+    {% endif %}
+    <div class="pull-right toast-pf-action">
+      {% spaceless %}
+        <a {{ action_id }} {{ action_class }} href="{{ first_action.url }}">
+          {{ first_action.name }}
+        </a>
+      {% endspaceless %}
+    </div>
+  {% endif %}
+
+  <span class="{{ icon_classes|join(' ') }}"></span>
+  {{ message }}
+</div>

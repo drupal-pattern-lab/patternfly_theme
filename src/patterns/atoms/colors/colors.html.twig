@@ -1,0 +1,14 @@
+{#
+/**
+ * @file
+ * Provides a colors demo pattern.
+ */
+#}
+<ul class="colors">
+  {% for color, value in colors -%}
+    <li class="colors__item colors--{{ color }}">
+      <span class="colors__swatch"></span>
+      <code class="colors__label"></code>
+    </li>
+  {%- endfor %}
+</ul>

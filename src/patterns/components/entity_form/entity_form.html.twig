@@ -1,0 +1,75 @@
+{#
+/**
+ * @file
+ * An RHC Ops entity form pattern.
+ *
+ * @var object[] form
+ *   The form object for form inputs.
+ *   - string id
+ *     A form id.
+ *   - string name
+ *     A form name.
+ *   - string action
+ *     A form action.
+ *   - string method
+ *     A form method.
+ *   - string charset
+ *     A form charset.
+ * @var object image.
+ *     - An image object.
+ * @var object entity.
+ *     - An entity object.
+ * @var object[] groups
+ *   An array of input groups to display.
+ */
+#}
+
+<div class="container-fluid">
+  <form
+    id="{{ form.id }}"
+    role="form"
+    action="{{ form.action }}"
+    method="{{ form.method }}"
+    accept-charset="{{ form.charset }}"
+    class="entity-form"
+  >
+    <input type="hidden" name="form_build_id" value="{{ form.form_build_id }}">
+    <input type="hidden" name="form_token" value="{{ form.form_token }}">
+    <input type="hidden" name="form_id" value="{{ form.form_id }}">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1>{{ title }}</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        {% include '@rhcOpsLib/components/ops_header/ops_header.html.twig' with {
+          'image': {
+            'src': image['#path'],
+            'alt': image['#alt'],
+          },
+          'subheader': {
+            'text': entity['#text'],
+            'url': entity['#path'],
+          },
+          'header': entity.label['#value'],
+          'actions': form_actions,
+        } only %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        {% for group in groups.content -%}
+          {{ group['#value'] }}
+        {%- endfor %}
+      </div>
+      {% if groups.sidebar.0['#value']['#access'] is null %}
+        <div class="col-md-4">
+          <div class="sidebar">
+            {{ groups.sidebar.0['#value'] }}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </form>
+</div>

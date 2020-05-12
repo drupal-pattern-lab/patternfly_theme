@@ -1,0 +1,41 @@
+{#
+/**
+ * @file
+ * An Ops Dashboard Checklist Unordered List.
+ *
+ * @var hash[] items
+ *   - string text
+ *     The checklist item text.
+ *   - bool checked
+ *     True if the checklist item is checked.
+ */
+#}
+{% set class = 'ul-checklist' %}
+<ul class="{{ class }}">
+  {% for item in items %}
+    {% set li_class = class ~ '__item' %}
+    {% if item.checked|default %}
+      {% set li_class = li_class ~ ' ' ~ class ~ '__item--checked' %}
+    {% endif %}
+    <li class="{{ li_class }}">
+      {% if item.checked|default %}
+        {%
+        include '@rhcOpsLib/atoms/icon/icon.html.twig' with {
+          'lib': 'fa',
+          'name': 'check-circle-o',
+          'class': 'ul-checklist__icon',
+        }
+        %}
+      {% else %}
+        {%
+        include '@rhcOpsLib/atoms/icon/icon.html.twig' with {
+        'lib': 'fa',
+        'name': 'circle-o',
+        'class': 'ul-checklist__icon',
+        }
+        %}
+      {% endif %}
+      {{ item.text }}
+    </li>
+  {% endfor %}
+</ul>

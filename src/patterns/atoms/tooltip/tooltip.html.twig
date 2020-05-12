@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * A Bootstrap tooltip pattern atom.
+ *
+ * @var string type
+ *   Detemines tooltip element type.
+ * @var string text
+ *   The tooltip trigger element text.
+ * @var string tooltip
+ *   The tooltip contents.
+ * @var string placement
+ *   How to position the tooltip.
+ *
+ * @see https://getbootstrap.com/docs/3.3/javascript/#tooltips
+ */
+#}
+
+{% if type == "button" %}
+  <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="{{ placement|default('top') }}" title="{{ tooltip }}">{{ text }}</button>
+{% else %}
+  <a href="#" title="" data-toggle="tooltip" data-placement="{{ placement|default('top') }}" data-original-title="{{ tooltip }}">{{ text }}</a>
+{% endif %}

@@ -1,0 +1,62 @@
+// RHC Ops Health Index
+//
+// An implementation of a health index.
+//
+// Markup: health.html.twig
+//
+// Styleguide Atoms.HealthIndex
+
+@import '../../globals/colors';
+
+$container-light-red: #{color-level($color-reds-bright-red, 3)};
+$container-dark-red: #{color-level($color-reds-bright-red, -1)};
+
+$grades: (
+  $color-greens-apple,
+  $color-greens-pistachio,
+  $color-oranges-web-orange,
+  $color-oranges-tahiti-gold,
+  $container-light-red,
+  $container-dark-red
+);
+
+%container-health {
+  border: 2px solid color-level($color-gray, 9);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: fit-content;
+
+  &__grade {
+    display: inline-block;
+    margin: 0 -1px -1px;
+    padding: 5px 8px;
+
+    @for $i from 1 to length($grades) + 1 {
+      &--current {
+        &:nth-child(#{$i}) {
+          background: nth($grades, $i);
+          color: $color-white;
+        }
+      }
+
+      &:nth-child(#{$i}) {
+        background: $color-white;
+        border-bottom: solid 5px nth($grades, $i);
+        color: $color-grays-oslo-gray;
+      }
+    }
+  }
+}
+
+.container-health {
+  @extend %container-health;
+}
+
+.container-health__grade {
+  @extend %container-health__grade;
+
+  &.container-health__grade--current {
+    @extend %container-health__grade--current;
+  }
+}

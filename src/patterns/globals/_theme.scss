@@ -1,0 +1,23 @@
+////
+/// @name Theme Palette & Details
+///
+////
+
+@import 'colors';
+
+$palette-primary: $color-white;
+$palette-secondary: $color-black;
+$palette-accent: $color-blue;
+$palette-background: $color-black;
+$palette-foreground: $color-white;
+$palette: (
+  'primary': $palette-primary,
+  'secondary': $palette-secondary,
+  'accent': $palette-accent,
+  'background': $palette-background,
+  'foreground': $palette-foreground
+);
+
+@function palette($key: 'primary') {
+  @return map-get($palette, $key);
+}

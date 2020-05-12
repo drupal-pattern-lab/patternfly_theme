@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Provides an attribute rendering macro.
+ *
+ * @var hash[] attributes
+ *   Hashmaps indicating an attribute name and value for HTML tags.
+#}
+{% macro attr(attributes) -%}
+  {% for attribute, value in attributes %} {{ attribute }}="
+    {%- if value is iterable -%}
+      {{ value|join(' ') }}
+    {%- else -%}
+      {{ value }}
+    {%- endif %}"
+  {%- endfor %}
+{%- endmacro %}

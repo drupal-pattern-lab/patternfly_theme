@@ -1,0 +1,142 @@
+// RHC Ops Header
+//
+// A Header for use with entities on the RHC Ops Dashboard.
+//
+// Markup: ops_header.html.twig
+//
+// Styleguide Patterns.OpsHeader
+
+@import '../../globals/breakpoints';
+@import '../../globals/colors';
+
+$btn-font-size: 14px;
+$image-size: 96px;
+$vertical-rhythm: 20px;
+
+%ops-header {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px 0;
+  width: 100%;
+
+  &__action {
+    display: inline-block;
+    margin: 0 5px;
+  }
+
+  &__actions {
+    flex-grow: 1;
+    min-height: 32px;
+    min-width: 70px;
+    padding-bottom: $vertical-rhythm;
+    text-align: center;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+    }
+  }
+
+  &__header {
+    font-weight: 700;
+    margin-top: 12px;
+  }
+
+  &__headers {
+    padding: $vertical-rhythm 25px;
+  }
+
+  &__image {
+    max-height: $image-size;
+    max-width: $image-size;
+    vertical-align: middle;
+    white-space: normal;
+  }
+
+  &__image-container {
+    border: solid 1px color-level($color-grays-oslo-gray, 7);
+    border-radius: 3px;
+    height: $image-size;
+    text-align: center;
+    white-space: nowrap;
+    width: $image-size;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+    }
+  }
+
+  &__label {
+    margin: 5px 0 10px;
+  }
+
+  &__labels {
+    padding-bottom: $vertical-rhythm;
+    vertical-align: bottom;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      vertical-align: bottom;
+    }
+  }
+
+  &__subheader {
+    font-size: 1.1em;
+
+    &::before {
+      content: '';
+      display: inline-block;
+    }
+  }
+}
+
+.ops-header {
+  @extend %ops-header;
+
+  &__action.btn {
+    @extend %ops-header__action;
+  }
+
+  &__actions {
+    @extend %ops-header__actions;
+
+    @media(min-width: $screen-lg-min) {
+      text-align: right;
+    }
+  }
+
+  &__header {
+    @extend %ops-header__header;
+  }
+
+  &__headers {
+    @extend %ops-header__headers;
+  }
+
+  &__image {
+    @extend %ops-header__image;
+  }
+
+  &__image-container {
+    @extend %ops-header__image-container;
+  }
+
+  &__label {
+    @extend %ops-header__label;
+  }
+
+  &__labels {
+    @extend %ops-header__labels;
+  }
+
+  &__subheader {
+    @extend %ops-header__subheader;
+  }
+}

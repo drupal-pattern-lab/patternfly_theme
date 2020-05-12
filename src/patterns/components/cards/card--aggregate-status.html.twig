@@ -1,0 +1,60 @@
+{#
+/**
+ * Provides a PatternFly card pattern.
+ *
+ * @var string icon
+ *   Optional icon specified from the FontAwesome library.
+ * @var string count
+ *   The aggregate count to display on the card.
+ * @var object[] notifications
+ *   Optional notifications to display for the aggregate card.
+ *   For the 'mini' variant, it is recommended to only show one notification.
+ *   - string icon
+ *     The PatternFly notification icon to use.
+ *   - string text
+ *     Optional notification text.
+ *   - string url
+ *     Optional notification URL to use as a link.
+ *   - string tooltip
+ *     Optional tooltip to apply to the notification.
+ *   - string class
+ *     Optional classes to add to the notification.
+ *     Examples:
+ *     - add
+ *
+ * @see "@rhcOpsLib/components/cards/card.html.twig"
+ */
+#}
+{% extends '@rhcOpsLib/components/cards/card.html.twig' %}
+{% block title -%}
+  {% if title.url|default() -%}
+    <a href="{{ title.url }}">
+  {% endif %}
+  {% if icon|default() -%}
+    {% include '@rhcOpsLib/atoms/icon/icon.html.twig' with icon only %}
+  {% endif %}
+  <span class="card-pf-aggregate-status-count">{{ count }}</span>
+  {{ title.text }}
+  {% if title.url|default() -%}
+    </a>
+  {% endif %}
+{%- endblock %}
+{% block body -%}
+  {{ parent() }}
+  <p class="card-pf-aggregate-status-notifications">
+    {% for notification in notifications -%}
+      <span class="card-pf-aggregate-status-notification">
+        {% if notification.tooltip|default() and not notification.url|default() %}
+          {% set notification = notification|merge({url: '#'}) %}
+        {% endif %}
+        {% if notification.url|default() -%}
+          <a href="{{ notification.url }}" class="{{ notification.class }}" {% if notification.tooltip|default() %}data-toggle="tooltip" data-placement="top"{% endif %} title="{{ notification.tooltip|default(notification.text) }}">
+        {%- endif %}
+            {% include '@rhcOpsLib/atoms/icon/icon.html.twig' with notification.icon only %}{{ notification.text }}
+        {% if notification.url|default() -%}
+          </a>
+        {% endif %}
+      </span>
+    {%- endfor %}
+  </p>
+{%- endblock %}

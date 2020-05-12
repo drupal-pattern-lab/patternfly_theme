@@ -1,0 +1,90 @@
+// Fields Overview
+//
+// A pattern to display an overview of fields with optional sidebar.
+//
+// Markup: fields_overview.html.twig
+//
+// Styleguide Patterns.FieldsOverview
+
+@import '../../globals/colors';
+
+$vertical-rhythm: 20px;
+
+%fields-overview {
+  &__fields {
+    padding-bottom: $vertical-rhythm;
+  }
+
+  &__sidebar {
+    background: color-level($color-gray, 9);
+    padding-bottom: $vertical-rhythm;
+    padding-top: $vertical-rhythm;
+
+    %field {
+      padding-left: 0;
+      padding-right: 0;
+
+      &__label {
+        display: block;
+      }
+
+      &--switch {
+        %field {
+          &__widget {
+            float: right;
+          }
+        }
+      }
+    }
+
+    %row {
+      border-top: solid 1px color-level($color-gray, 7);
+      margin: 0 40px;
+      padding-bottom: #{$vertical-rhythm / 2};
+      padding-top: #{$vertical-rhythm / 2};
+
+      &:first-of-type {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      &:last-of-type {
+        padding-bottom: 0;
+      }
+    }
+
+    &:nth-child(2) {
+      margin-top: $vertical-rhythm;
+    }
+  }
+}
+
+.fields-overview {
+  &__fields {
+    @extend %fields-overview__fields;
+  }
+
+  &__sidebar {
+    @extend %fields-overview__sidebar;
+  }
+}
+
+.field {
+  @extend %field;
+
+  &--switch {
+    @extend %field--switch;
+  }
+
+  &__label {
+    @extend %field__label;
+  }
+
+  &__widget {
+    @extend %field__widget;
+  }
+}
+
+.row {
+  @extend %row;
+}

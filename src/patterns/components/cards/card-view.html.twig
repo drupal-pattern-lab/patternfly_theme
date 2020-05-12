@@ -1,0 +1,43 @@
+{#
+/**
+ * Provides a PatternFly card view.
+ *
+ * Should be wrapped with a div having a 'container' class or variant.
+ *
+ * @var string layout
+ *   The layout type. Examples:
+ *   - fixed (default)
+ *   - fluid
+ * @var string size
+ *   The card sizing. Examples:
+ *   - small
+ *   - medium (default)
+ *   - large
+ * @var array[] cards
+ *   An array of card rows.
+ *   - array
+ *     @see "@rhcOpsLib/components/cards/card"
+ */
+#}
+<div class="container{% if layout|default() and layout != 'fixed' %}-{{ layout }}{% endif %} container-cards-pf cards-pf">
+  {% for card_row in cards -%}
+    <div class="row row-cards-pf">
+      {% for card in card_row -%}
+        {% set card_type = '' %}
+        {% if card.type|default() and card.type != 'card' %}
+          {% set card_type = '--' ~ card.type %}
+        {% endif %}
+        {% if size == 'small' %}
+          {% set card_col = 'col-xs-6 col-sm-2 col-md-2' %}
+        {% elseif size == 'large' %}
+          {% set card_col = 'col-xs-12 col-sm-6 col-md-6' %}
+        {% else %}
+          {% set card_col = 'col-xs-12 col-sm-4 col-md-4' %}
+        {% endif %}
+        <div class="{{ card_col }}">
+          {% include '@rhcOpsLib/components/cards/card' ~ card_type ~ '.html.twig' with card only %}
+        </div>
+      {%- endfor %}
+    </div>
+  {%- endfor %}
+</div>

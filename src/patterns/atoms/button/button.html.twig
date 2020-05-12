@@ -1,0 +1,54 @@
+{#
+/**
+ * @file
+ * A Patternfly button pattern atom.
+ *
+ * @var string text
+ *   The button text.
+ * @var string url
+ *   The optional button link URL.
+ * @var string option
+ *   A visual display option, one of the following:
+ *     - default (default)
+ *     - primary
+ *     - success
+ *     - info
+ *     - warning
+ *     - danger
+ *     - link
+ *   @see https://getbootstrap.com/docs/3.3/css/#buttons-options
+ * @var string size
+ *   The size of the button, one of the following:
+ *     - lg
+ *     - sm
+ *     - xs
+ * @var bool disabled
+ *   True if the button is visually disabled.
+ * @var string class
+ *   Any additional classes for the button.
+ * @var hash[] attributes
+ *   Optional attributes for the button.
+ */
+#}
+
+{% if size|default() %}
+  {% set size = 'btn-' ~ size %}
+{% endif %}
+{% if url|default() -%}
+  <a href="{% if not disabled|default %}{{ url }}{% endif %}" class="btn btn-
+    {{- option|default('default') }} {{ size|default() }} {{ class|default() -}}
+    " role="button"{% if disabled %} disabled{% endif %}
+    {% for attribute, value in attributes %} {{ attribute }}="
+      {%- if value is iterable -%}
+        {{ value|join(' ') }}
+      {%- else -%}
+        {{ value }}
+      {%- endif %}"
+    {%- endfor %}
+  >{{ text }}</a>
+{%- else -%}
+  <button type="button" class="btn btn-
+    {{- option|default('default') }} {{ size|default() }} {{ class|default() -}}
+    "{% if disabled %} disabled{% endif %}
+  >{{ text }}</button>
+{%- endif %}

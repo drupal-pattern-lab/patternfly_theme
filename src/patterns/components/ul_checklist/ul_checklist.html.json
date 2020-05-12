@@ -1,0 +1,36 @@
+{
+  "items": [
+    {
+      "text": "Accept the Red Hat Container Appendix",
+      "checked": false
+    },
+    {
+      "text": "Package and test your application as a container",
+      "checked": true
+    },
+    {
+      "text": "Upload collateral (3x minimum; 1 document type)",
+      "checked": false
+    },
+    {
+      "text": "Provide a container registry namespace",
+      "checked": true
+    },
+    {
+      "text": "Provide an outbound repository name",
+      "checked": false
+    },
+    {
+      "text": "Update your company profile",
+      "checked": true
+    },
+    {
+      "text": "Update your product profile",
+      "checked": true
+    },
+    {
+      "text": "Obtain distribution approval from Red Hat",
+      "checked": false
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{#
+/**
+ * @file
+ * A PatternFly search filters pattern.
+ *
+ * @var object[] form
+ *   The form object for all filters.
+ *   - string action
+ *     A form action.
+ *   - string method
+ *     A form method.
+ *   - array attributes
+ *     An array of optional form attributes.
+ *    - array class
+ *       An array of CSS class attributes.
+ * @var object[] categories
+ *   An array of categories/filters to display.
+ *     - object[] category
+ *       A single category filter item.
+ *     - string title
+ *         A category filter title.
+ *     - string value
+ *         A category filter value.
+ *     - bool active
+ *         An active/inactive state for the category filter.
+ *     - int count
+ *         A count for the category filter.
+ */
+#}
+
+{% spaceless %}
+<div class="filter-panel-pf">
+  <form
+    role="form"
+    action="{{ form.action }}"
+    method="{{ form.method }}"
+    accept-charset="{{ form.charset }}"
+    {% if form.attributes.class %} class="{{ form.attributes.class|join(' ') }}" {% endif %}>
+      {% for category in categories %}
+        <fieldset class="checkbox filter-panel-pf-category-items">
+          <legend class="filter-panel-pf-category-title">{{ category.title }}</legend>
+          <div class="filter-panel-pf-category-item">
+            {% for item in category.items %}
+            <div class="checkbox">
+              <label title="{{ item.title }}">
+                <input
+                  type="checkbox"
+                  name="f[{{ loop.index0 }}]"
+                  value="{{ item.value }}"
+                  {% if item.active %} checked="checked" {% endif %}
+                  onchange="this.form.submit();"
+                > {{ item.title }}
+                {% if item.count %}({{ item.count }}){% endif %}
+              </label>
+            </div>
+            {% endfor %}
+          </div>
+        </fieldset>
+      {% endfor %}
+  </form>
+</div>
+{% endspaceless %}

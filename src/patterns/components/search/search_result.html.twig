@@ -1,0 +1,41 @@
+{#
+/**
+ * @file
+ * A PatternFly search result atom.
+ *
+ * @var object[] form
+ *   The form object for all filters.
+ *   - string action
+ *     A form action.
+ *   - string method
+ *     A form method.
+ *   - array attributes
+ *     An array of optional form attributes.
+ *    - array class
+ *       An array of CSS class attributes.
+ * @var object[] categories
+ *   An array of categories/filters to display.
+ *     - object[] category
+ *       A single category filter item.
+ *     - string title
+ *         A category filter title.
+ *     - string value
+ *         A category filter value.
+ *     - bool active
+ *         An active/inactive state for the category filter.
+ *     - int count
+ *         A count for the category filter.
+ */
+#}
+
+<h4><a href="{{ link }}">{{ title }}</a></h4>
+{% if meta|length %}
+  <div class="search-result-meta">
+    <h5>{{ meta|join(' -- ') }}</h5>
+  </div>
+{% endif %}
+{% if snippet|default() %}
+  <div class="search-result-snippet">
+    <p>{{ snippet }}</p>
+  </div>
+{% endif %}

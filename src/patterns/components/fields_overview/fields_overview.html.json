@@ -1,0 +1,110 @@
+{
+  "title": "Overview",
+  "fields": [
+    {
+      "label": "RH Org Id",
+      "value": "02-00301",
+      "size": "small"
+    },
+    {
+      "label": "Team Created",
+      "value": "Apr 7, 2014 @ 4:21pm",
+      "size": "small"
+    },
+    {
+      "label": "Description",
+      "value": "Great user experience is ever-more dependent on application performance and quality. Even a few seconds delay can mean the difference between success and failure for a new business initiative. To capitalize on customer engagement, you need to know your customers and provide targeted offers that prompt them to interact in real time. Data bottlenecks are becoming more common as organizations need to process larger volumes, greater varieties, and a higher velocity of data to meet customer expectations and deliver personalized data-driven engagement.",
+      "size": "large"
+    }
+  ],
+  "sidebars": [
+    {
+      "fields": [
+        {
+          "type": "switch",
+          "label": "Signed GPA",
+          "value": "0",
+          "size": "large",
+          "options": {
+            "off-text": "No",
+            "on-text": "Yes"
+          }
+        },
+        {
+          "type": "switch",
+          "label": "Test/Internal Project",
+          "value": "0",
+          "size": "large",
+          "options": {
+            "off-text": "No",
+            "on-text": "Yes"
+          }
+        },
+        {
+          "type": "switch",
+          "label": "Active",
+          "value": "1",
+          "size": "large",
+          "options": {
+            "off-text": "No",
+            "on-text": "Yes"
+          }
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "type": "switch",
+          "label": "Container Zone",
+          "value": "1",
+          "size": "large",
+          "options": {
+            "off-text": "No",
+            "on-text": "Yes"
+          }
+        },
+        {
+          "type": "switch",
+          "label": "Middleware Zone",
+          "value": "0",
+          "size": "large",
+          "options": {
+            "off-text": "No",
+            "on-text": "Yes"
+          }
+        },
+        {
+          "type": "switch",
+          "label": "NFV Zone",
+          "value": "0",
+          "size": "large",
+          "options": {
+            "off-text": "No",
+            "on-text": "Yes"
+          }
+        },
+        {
+          "type": "switch",
+          "label": "OpenStack Zone",
+          "value": "0",
+          "size": "large",
+          "options": {
+            "off-text": "No",
+            "on-text": "Yes"
+          }
+        },
+        {
+          "type": "switch",
+          "label": "RHEL Zone",
+          "value": "0",
+          "size": "large",
+          "options": {
+            "off-text": "No",
+            "on-text": "Yes"
+          }
+        }
+      ]
+    }
+  ]
+}

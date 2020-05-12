@@ -1,0 +1,55 @@
+{#
+/**
+ * @file
+ * Provides a PatternFly Inline Notification pattern.
+ *
+ * @var string message
+ *   Message for the notification. Inline <a> elements need a class of
+ *   'alert-link'.
+ * @var string type
+ *   Optional type of notification. Defaults to info
+ *   Examples:
+ *   - info
+ *   - success
+ *   - warning
+ *   - error
+ * @var bool dismissible
+ *   Optional flag to make notification dismissible.
+ */
+#}
+
+{#- Set classes for alert and icon type -#}
+{% set icon_classes = ['pficon'] %}
+{% if type|default() == 'success' %}
+  {% set alert_type_class = 'alert-success' %}
+  {% set icon_type_class = 'pficon-ok' %}
+{% elseif type|default() == 'warning' %}
+  {% set alert_type_class = 'alert-warning' %}
+  {% set icon_type_class = 'pficon-warning-triangle-o' %}
+{% elseif type|default() == 'error' %}
+  {% set alert_type_class = 'alert-danger' %}
+  {% set icon_type_class = 'pficon-error-circle-o' %}
+{% else %}
+  {#- Alert type info -#}
+  {% set alert_type_class = 'alert-info' %}
+  {% set icon_type_class = 'pficon-info' %}
+{% endif %}
+{% set alert_classes = ['alert', alert_type_class] %}
+
+{#- Set class for dismissible alerts -#}
+{% if dismissible|default() %}
+  {% set alert_classes = alert_classes|merge(['alert-dismissable']) %}
+{% endif %}
+
+<div class="{{ alert_classes|join(' ') }}">
+  {#- Display button for dismissible alerts -#}
+  {% if dismissible|default() %}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span class="pficon pficon-close"></span>
+    </button>
+  {% endif %}
+
+  <span class="pficon {{ icon_type_class }}"></span>
+  {{ message|raw }}
+
+</div>

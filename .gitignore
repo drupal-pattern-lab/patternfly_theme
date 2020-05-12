@@ -1,0 +1,26 @@
+# Ignore the node modules folder.
+node_modules
+
+# Ignore generated cache files.
+.sass-cache
+
+# Ignore any errors thrown by NPM.
+npm-debug.log
+
+# Ignore any development-only map files.
+*.map
+
+# Ignore build artifact files.
+# Patternlab needs the subfolders to exist.
+dist/css/*
+!dist/css/.gitkeep
+dist/fonts/*
+!dist/fonts/.gitkeep
+dist/images/*
+!dist/images/.gitkeep
+dist/js/*
+!dist/js/.gitkeep
+
+# Ignore files that change every build.
+patternlab
+dependencyGraph.json

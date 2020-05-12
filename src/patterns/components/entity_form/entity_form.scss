@@ -1,0 +1,66 @@
+// RHC Ops Entity Form
+//
+// An implementation of an RHC Ops entity form.
+//
+// Markup: entity_form.html.twig
+//
+// Styleguide Patterns.EntityForm
+
+@import '../../globals/breakpoints';
+@import '../../globals/colors';
+
+$vertical-rhythm: 20px;
+
+form.entity-form {
+
+  .form-checkboxes-split-cols {
+
+    .form-checkboxes {
+      columns: 300px 2;
+    }
+
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  .form-required {
+    color: $color-red-required;
+  }
+
+  .sidebar {
+    background: color-level($color-gray, 9);
+    padding: $vertical-rhythm;
+
+    table {
+      background-color: transparent;
+
+      tbody,
+      tr,
+      td,
+      .form-control {
+        background-color: transparent;
+        border: 0 transparent solid;
+        box-shadow: none;
+      }
+    }
+
+    @media (min-width: $screen-md-min) {
+      td .form-type-select {
+        width: 50%;
+      }
+
+      .bootstrap-select:not([class*='col-']):not([class*='form-control']):not(.input-group-btn) {
+        max-width: 216px;
+      }
+    }
+
+    .field-name-field-pz-zone-approval-status {
+      label {
+        width: 90%;
+      }
+    }
+  }
+
+}

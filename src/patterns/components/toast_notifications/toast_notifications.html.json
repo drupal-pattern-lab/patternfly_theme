@@ -1,0 +1,31 @@
+{
+  "message": "<strong>Great job!</strong> This is really working out.",
+  "type": "info",
+  "actions": [
+    {
+      "name": "Reload Server",
+      "url": "#"
+    },
+    {
+      "name": "Action",
+      "url": "#",
+      "class": "foo"
+    },
+    {
+      "name": "Another Action",
+      "url": "#",
+      "id": "bar"
+    },
+    {
+      "name": "Something Else Here",
+      "url": "#"
+    },
+    {
+      "separator": true
+    },
+    {
+      "name": "Separated Link",
+      "url": "#"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{% set internalLabel = label|default('Info alert') %}
+{% set internalCloseLabel = close_label|default('close' ~ internalLabel) %}
+<div class="pf-c-alert {{ type|default() }}" aria-label="{{ internalLabel }}">
+  <div class="pf-c-alert__icon">
+    <i class="fas fa-fw {{ icon|default(fa-info-circle) }}" aria-hidden="true"></i>
+  </div>
+  <p class="pf-c-alert__title">
+    <strong>
+      <span class="pf-screen-reader">{{ internalLabel }}:</span>{{ title }}</strong>
+  </p>
+  {% if close_label|default() %}
+  <div class="pf-c-alert__action">
+    <button class="pf-c-button pf-m-plain" type="button" aria-label="{{ internalCloseLabel }}: {{  title }}">
+      <i class="fas fa-times" aria-hidden="true"></i>
+    </button>
+  </div>
+  {% endif %}
+  {% if description|default() %}
+  <div class="pf-c-alert__description">
+    <p>{{ description }}</p>
+  </div>
+  {% endif %}
+  {% if actions|default() %}
+  <div class="pf-c-alert__action-group">
+    {% for action in actions %}
+    <button class="pf-c-button pf-m-link pf-m-inline" type="button" {{ action.js|raw }}>{{ action.text }}</button>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>

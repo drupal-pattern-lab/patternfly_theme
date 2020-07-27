@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "Alert",
+  "properties": {
+    "type": {
+      "title": "Type",
+      "type": "string",
+      "enum": [
+        "",
+        "pf-m-info",
+        "pf-m-success",
+        "pf-m-warning",
+        "pf-m-danger"
+      ],
+      "options": {
+        "enum_titles": [
+          "Default",
+          "Info",
+          "Success",
+          "Warning",
+          "Danger"
+        ]
+      }
+    },
+    "icon": {
+      "title": "Icon",
+      "type": "string",
+      "enum": [
+        "",
+        "fa-bell",
+        "fa-info-circle",
+        "fa-check-circle",
+        "fa-exclamation-triangle",
+        "fa-exclamation-circle"
+      ],
+      "options": {
+        "enum_titles": [
+          "Default",
+          "Bell",
+          "Info Circle",
+          "Checkmark Circle",
+          "Exclamation Triangle",
+          "Exclamation Circle"
+        ]
+      }
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "description": {
+      "title": "Description",
+      "type": "string",
+      "format": "textarea"
+    },
+    "label": {
+      "title": "ARIA Label",
+      "type": "string"
+    },
+    "close_label": {
+      "title": "ARIA Close Alert Label",
+      "type": "string"
+    },
+    "actions": {
+      "title": "Actions",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "title": "Text",
+            "type": "string"
+          },
+          "js": {
+            "title": "Action Raw JavaScript",
+            "type": "string",
+            "format": "textarea"
+          }
+        }
+      }
+    }
+  }
+}

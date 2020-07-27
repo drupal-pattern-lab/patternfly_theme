@@ -4,13 +4,8 @@ description: PatternFly D8 Theme
 package: Other
 core: 8.x
 base theme: stable
-component-libraries:
-  patternfly:
-    paths:
-      - src/patterns/global
-      - src/patterns/atoms
-      - src/patterns/components
-      - src/templates
+libraries:
+  - patternfly/global
 regions:
   header: Header
   content: Content

@@ -4,4 +4,10 @@ global:
     # Drupal 8 loads stylesheets based on the SMACSS ordering of:
     # base, layout, component, state, theme
     base:
-      dist/patternfly.css: {}
+      dist/patternfly.min.css: {}
+      dist/patternfly-addons.css: {}
+patternfly:
+  version: VERSION
+  drupalSettings: {}
+  patterns:
+    src/patterns: {plugin: twig}

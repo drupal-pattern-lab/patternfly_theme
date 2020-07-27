@@ -14,10 +14,10 @@ npm-debug.log
 # Patternlab needs the subfolders to exist.
 dist/css/*
 !dist/css/.gitkeep
-dist/fonts/*
-!dist/fonts/.gitkeep
-dist/images/*
-!dist/images/.gitkeep
+dist/assets/fonts/*
+!dist/assets/fonts/.gitkeep
+dist/assets/images/*
+!dist/assets/images/.gitkeep
 dist/js/*
 !dist/js/.gitkeep
 

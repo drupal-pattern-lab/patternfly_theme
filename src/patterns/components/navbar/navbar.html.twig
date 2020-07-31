@@ -1,0 +1,96 @@
+{#
+/**
+ * @file
+ * An Ops Dashboard Header pattern.
+ *
+ * @var string toggle_text
+ *   The text to use for screenreader menu toggle.
+ * @var array image
+ *   The nav brand image.
+ *   @see '@rhcOpsLib/atoms/image.html.twig'.
+ * @var string title
+ *   Optional nav brand text if no image is present.
+ * @var array utility_links
+ *   Optional links to for utility links or dropdowns.
+ *   - string text
+ *     The link or dropdown text.
+ *   - string url
+ *     The URL for the link, determines if link.
+ *   - object icon
+ *     Optional icon for the link or dropdown.
+ *     @see '@rhcOpsLib/atoms/icon/icon.html.twig'
+ *   - array links
+ *     Optional links for the dropdown, determines if dropdown.
+ *   - string content
+ *     If a list of links are not needed, the content property can contain
+       markup, such as empty text.
+ *   @see '@rhcOpsLib/atoms/dropdown/dropdown.html.twig'
+ * @var array links
+ *   An array of primary navigation links.
+ *   - string text
+ *     The link text.
+ *   - string url
+ *     The link URL.
+ *   - bool active
+ *     If the link path is an active path.
+ *   - string class
+ *     Optional additional classes for the link.
+ * @var bool full_width
+ *   Optional indicator to specify the nav width. Default: true.
+ */
+#}
+<nav class="navbar navbar-default navbar-pf" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-1">
+      <span class="sr-only">{{ toggle_text }}</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      {% if image|default() %}
+        {% include '@rhcOpsLib/atoms/image/image.html.twig' with image %}
+      {% else %}
+        {{ title|default('P A T T E R N F L Y') }}
+      {% endif %}
+    </a>
+  </div>
+  <div class="collapse navbar-collapse navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-utility">
+      {% for utility_link in utility_links -%}
+        {% if utility_link.links|default() -%}
+          {%
+          include '@rhcOpsLib/atoms/dropdown/dropdown.html.twig' with {
+            'tag': 'li',
+            'icon': utility_link.icon|default({'lib': 'pf', 'name': 'help'}),
+            'text': utility_link.text,
+            'links': utility_link.links,
+          } only
+          %}
+        {%- elseif utility_link.url|default() -%}
+          <li>
+            <a href="{{ utility_link.url }}">
+              {% if utility_link.icon|default() -%}
+                {% include '@rhcOpsLib/atoms/icon/icon.html.twig' with utility_link.icon only %}
+              {%- endif %}
+              {{ utility_link.text }}
+            </a>
+          </li>
+        {%- else %}
+          <li>
+            {{ utility_link.content|default() }}
+          </li>
+        {%- endif %}
+      {%- endfor %}
+    </ul>
+    <ul class="nav navbar-nav navbar-primary">
+      {% for link in links -%}
+        {% set class = link.class %}
+        {% if link.active %}{% set class = link.class ~ 'active' %}{% endif %}
+        <li{% if class|default() %} class="{{ class }}"{% endif %}>
+          <a href="{{ link.url }}">{{ link.text }}</a>
+        </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</nav>

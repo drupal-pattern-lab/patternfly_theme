@@ -1,0 +1,119 @@
+{
+  "toggle_text": "Toggle navigation",
+  "image": {
+    "src": "components/navigation/assets/sample_image.svg",
+    "alt": "PatternFly Enterprise Application"
+  },
+  "utility_links": [
+    {
+      "icon": {
+        "lib": "pficon",
+        "name": "help"
+      },
+      "text": "Help",
+      "links": [
+        {
+          "text": "Help",
+          "url": "#"
+        },
+        {
+          "text": "About",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "icon": {
+        "lib": "pficon",
+        "name": "user"
+      },
+      "text": "Jane Doe",
+      "links": [
+        {
+          "text": "Link",
+          "url": "#"
+        },
+        {
+          "text": "Another link",
+          "url": "#"
+        },
+        {
+          "text": "Something else here",
+          "url": "#"
+        },
+        {
+          "divider": true
+        },
+        {
+          "text": "More options",
+          "menu": [
+            {
+              "text": "Link",
+              "url": "#"
+            },
+            {
+              "text": "Another link",
+              "url": "#"
+            },
+            {
+              "text": "Something else here",
+              "url": "#"
+            },
+            {
+              "divider": true
+            },
+            {
+              "header": true,
+              "text": "Nav header"
+            },
+            {
+              "text": "Separated link",
+              "url": "#"
+            },
+            {
+              "divider": true
+            },
+            {
+              "text": "One more separated link",
+              "url": "#"
+            }
+          ]
+        },
+        {
+          "divider": true
+        },
+        {
+          "text": "One more separated link",
+          "url": "#"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "text": "First Link",
+      "url": "#"
+    },
+    {
+      "text": "Another Link",
+      "url": "#",
+      "active": true
+    },
+    {
+      "text": "And Another",
+      "url": "#"
+    },
+    {
+      "text": "As a General Rule",
+      "url": "#"
+    },
+    {
+      "text": "Five to Seven Links",
+      "url": "#"
+    },
+    {
+      "text": "Is Good",
+      "url": "#"
+    }
+  ]
+}

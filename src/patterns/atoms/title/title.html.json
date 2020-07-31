@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "Title",
+  "category": "atoms",
+  "properties": {
+    "title": {
+      "title": "Title",
+      "type": "string"
+    }
+  }
+}

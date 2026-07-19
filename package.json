@@ -7,7 +7,7 @@
   "devDependencies": {
     "@patternfly/patternfly": "^2.71.7",
     "del": "^5.1.0",
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.1",
     "gulp-changed": "^4.0.2",
     "mkdirp": "^1.0.4"
   },
